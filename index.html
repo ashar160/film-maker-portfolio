@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Mitchell | Filmmaker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#8B2635', secondary: '#F5F5F0' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1A1A1A;
+            background-color: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .film-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9Ii4wNSIvPjwvc3ZnPg==');
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background-color: #8B2635;
+            z-index: 9999;
+            transition: width 0.2s ease-out;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #8B2635;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .video-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .video-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .video-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .overlay {
+            opacity: 0.9;
+        }
+
+        .video-card .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .play-button {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #8B2635;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 26px;
+            width: 1px;
+            height: calc(100% - 18px);
+            background-color: rgba(139, 38, 53, 0.3);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .support-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        input:not([type="checkbox"]):not([type="radio"]),
+        textarea {
+            border: none;
+            border-bottom: 1px solid #e5e7eb;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:not([type="checkbox"]):not([type="radio"]):focus,
+        textarea:focus {
+            border-color: #8B2635;
+        }
+
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .custom-checkbox.checked {
+            background-color: #8B2635;
+            border-color: #8B2635;
+        }
+
+        input:checked+.payment-box {
+            border-color: #8B2635;
+            /* Tailwind's blue-500 */
+            background-color: #eff6ff;
+            /* Tailwind's blue-50 */
+        }
+
+        input:checked+.payment-box .custom-radio {
+            border-color: #8B2635 !important;
+            background-color: #8B2635 !important;
+        }
+
+        .custom-checkbox.checked::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 10px;
+            height: 5px;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: rotate(-45deg);
+        }
+
+        .custom-radio {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .custom-radio.checked {
+            border-color: #8B2635;
+        }
+
+        .custom-radio.checked::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 10px;
+            height: 10px;
+            background-color: #8B2635;
+            border-radius: 50%;
+        }
+
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            background-color: #e5e7eb;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-switch.checked {
+            background-color: #8B2635;
+        }
+
+        .custom-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .custom-switch.checked::after {
+            transform: translateX(26px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            width: 4px;
+            height: 8px;
+            margin-left: -2px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 2px;
+            animation: scrollIndicator 2s infinite;
+        }
+
+        @keyframes scrollIndicator {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        .section-heading {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: #8B2635;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(26, 26, 26, 0.98);
+            z-index: 9998;
+            transition: right 0.4s ease;
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .mobile-menu-link {
+            margin: 15px 0;
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-link:hover {
+            color: #8B2635;
+        }
+
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .video-modal iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-circle {
+            stroke-dasharray: 283;
+            transition: stroke-dashoffset 0.3s ease;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #8B2635;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #8B2635;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .support-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="film-grain"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-white bg-opacity-95 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-['Playfair_Display'] font-bold text-primary">James Mitchell</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-gray-800 hover:text-primary transition-colors">About</a>
+                <a href="#work" class="nav-link text-gray-800 hover:text-primary transition-colors">My Work</a>
+                <a href="#why" class="nav-link text-gray-800 hover:text-primary transition-colors">Why I Create</a>
+                <a href="#support" class="nav-link text-gray-800 hover:text-primary transition-colors">Support</a>
+                <a href="#contact" class="nav-link text-gray-800 hover:text-primary transition-colors">Contact</a>
+            </div>
+            <div class="md:hidden w-8 h-8 flex items-center justify-center cursor-pointer" id="mobileMenuBtn">
+                <i class="ri-menu-line text-2xl"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-close" id="mobileMenuClose">
+            <i class="ri-close-line"></i>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="#about" class="mobile-menu-link">About</a>
+            <a href="#work" class="mobile-menu-link">My Work</a>
+            <a href="#why" class="mobile-menu-link">Why I Create</a>
+            <a href="#support" class="mobile-menu-link">Support</a>
+            <a href="#contact" class="mobile-menu-link">Contact</a>
+        </div>
+    </div>
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden"
+        style="background-image: url('https://readdy.ai/api/search-image?query=cinematic%20film%20set%20with%20dramatic%20lighting%2C%20a%20camera%20on%20a%20dolly%20track%2C%20film%20crew%20silhouettes%2C%20moody%20atmosphere%20with%20smoke%20and%20light%20beams%2C%20professional%20film%20production%20environment%2C%20high-end%20cinematography%20equipment%2C%20dark%20shadows%20and%20highlights%2C%20artistic%20composition&width=1920&height=1080&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70"></div>
+        <div class="container mx-auto px-6 z-10 text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 opacity-0 transform translate-y-8"
+                id="heroTitle">James Mitchell</h1>
+            <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto opacity-0 transform translate-y-8"
+                id="heroSubtitle">Crafting visual stories that challenge perspectives and inspire change</p>
+            <a href="#work"
+                class="inline-block px-8 py-3 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition-all transform opacity-0 translate-y-8 whitespace-nowrap"
+                id="heroButton">View My Work</a>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-28">
+        <div class="container mx-auto px-6">
+            <div class="mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://readdy.ai/api/search-image?query=portrait%20of%20a%20thoughtful%20filmmaker%20in%20his%2030s%20with%20a%20contemplative%20expression%2C%20standing%20with%20a%20vintage%20film%20camera%2C%20soft%20natural%20lighting%2C%20studio%20setting%20with%20film%20equipment%20in%20background%2C%20professional%20attire%20with%20creative%20flair%2C%20artistic%20composition%20with%20shallow%20depth%20of%20field&width=600&height=800&seq=2&orientation=portrait"
+                                alt="James Mitchell" class="w-full h-auto object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6">
+                                <p class="text-white text-lg">"Every frame is an opportunity to change someone's
+                                    perspective."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fade-in">
+                        <h2 class="section-heading text-3xl md:text-4xl font-bold mb-8 fade-in">About Me</h2>
+                        <p class="text-lg mb-6">I'm a filmmaker driven by the belief that stories can transform how we
+                            see the world. With a background spanning documentary, narrative, and experimental film,
+                            I've dedicated my career to amplifying voices that often go unheard.</p>
+                        <p class="text-lg mb-8">After graduating from NYU's Tisch School of the Arts in 2018, I've
+                            worked on projects that have screened at Sundance, SXSW, and Tribeca. My work explores
+                            themes of identity, social justice, and human connection.</p>
+                        <div class="mt-10">
+                            <h3 class="text-xl font-semibold mb-6">My Journey</h3>
+                            <div class="space-y-8">
+                                <div class="timeline-item pb-8">
+                                    <h4 class="font-medium text-lg">2018</h4>
+                                    <p>Graduated from NYU Tisch School of the Arts with honors. Directed thesis film
+                                        "Echoes of Silence" which won the student showcase award.</p>
+                                </div>
+                                <div class="timeline-item pb-8">
+                                    <h4 class="font-medium text-lg">2019-2020</h4>
+                                    <p>Assistant Director on "The Crossing," which premiered at Sundance. Directed my
+                                        first documentary short "Voices Unheard" exploring immigrant experiences.</p>
+                                </div>
+                                <div class="timeline-item pb-8">
+                                    <h4 class="font-medium text-lg">2021-2022</h4>
+                                    <p>Received the Emerging Filmmaker Grant. Produced and directed "Beyond Borders,"
+                                        which screened at SXSW and won audience choice award.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-medium text-lg">2023-Present</h4>
+                                    <p>Working on my first feature film "The Silent Revolution" while teaching film
+                                        workshops for underserved youth in my community.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Work Section -->
+    <section id="work" class="py-20 md:py-28 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="mx-auto">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-16 fade-in">My Work</h2>
+                <div class="mb-10 fade-in">
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <button
+                            class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:border-primary transition-colors whitespace-nowrap filter-btn active"
+                            data-filter="all">All Projects</button>
+                        <button
+                            class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:border-primary transition-colors whitespace-nowrap filter-btn"
+                            data-filter="documentary">Documentary</button>
+                        <button
+                            class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:border-primary transition-colors whitespace-nowrap filter-btn"
+                            data-filter="narrative">Narrative</button>
+                        <button
+                            class="px-4 py-2 rounded-full bg-white border border-gray-200 hover:border-primary transition-colors whitespace-nowrap filter-btn"
+                            data-filter="experimental">Experimental</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card rounded-lg overflow-hidden shadow-md fade-in" data-category="documentary">
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=documentary%20film%20scene%20of%20urban%20landscape%20with%20people%20sharing%20stories%2C%20emotional%20moment%20captured%20in%20natural%20lighting%2C%20authentic%20documentary%20style%20cinematography%2C%20social%20issues%20theme%2C%20high-quality%20film%20still%20with%20cinematic%20composition&width=600&height=400&seq=3&orientation=landscape"
+                                alt="Beyond Borders" class="w-full h-full object-cover object-top">
+                            <div class="overlay"></div>
+                            <div class="play-button w-14 h-14 flex items-center justify-center bg-white/80 rounded-full cursor-pointer"
+                                data-video="beyond-borders">
+                                <i class="ri-play-fill text-primary text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-1">Beyond Borders</h3>
+                            <p class="text-gray-600 text-sm mb-2">Documentary • 2022</p>
+                            <p class="text-gray-700">A documentary exploring the lives of immigrants navigating cultural
+                                identity in America.</p>
+                        </div>
+                    </div>
+                    <div class="video-card rounded-lg overflow-hidden shadow-md fade-in" data-category="narrative">
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=dramatic%20narrative%20film%20scene%20with%20two%20actors%20in%20emotional%20confrontation%2C%20cinematic%20lighting%20with%20strong%20shadows%2C%20intimate%20indoor%20setting%2C%20professional%20film%20production%20quality%2C%20storytelling%20moment%20with%20tension%2C%20artistic%20composition&width=600&height=400&seq=4&orientation=landscape"
+                                alt="Echoes of Silence" class="w-full h-full object-cover object-top">
+                            <div class="overlay"></div>
+                            <div class="play-button w-14 h-14 flex items-center justify-center bg-white/80 rounded-full cursor-pointer"
+                                data-video="echoes-of-silence">
+                                <i class="ri-play-fill text-primary text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-1">Echoes of Silence</h3>
+                            <p class="text-gray-600 text-sm mb-2">Narrative Short • 2018</p>
+                            <p class="text-gray-700">A coming-of-age story about a young musician finding her voice amid
+                                family expectations.</p>
+                        </div>
+                    </div>
+                    <div class="video-card rounded-lg overflow-hidden shadow-md fade-in" data-category="experimental">
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=abstract%20experimental%20film%20scene%20with%20vibrant%20colors%20and%20patterns%2C%20artistic%20visual%20effects%2C%20creative%20cinematography%20techniques%2C%20avant-garde%20film%20style%2C%20artistic%20expression%20through%20visual%20medium%2C%20experimental%20lighting%20and%20composition&width=600&height=400&seq=5&orientation=landscape"
+                                alt="Fragments" class="w-full h-full object-cover object-top">
+                            <div class="overlay"></div>
+                            <div class="play-button w-14 h-14 flex items-center justify-center bg-white/80 rounded-full cursor-pointer"
+                                data-video="fragments">
+                                <i class="ri-play-fill text-primary text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-1">Fragments</h3>
+                            <p class="text-gray-600 text-sm mb-2">Experimental • 2021</p>
+                            <p class="text-gray-700">An experimental visual poem exploring memory, time, and perception
+                                through abstract imagery.</p>
+                        </div>
+                    </div>
+                    <div class="video-card rounded-lg overflow-hidden shadow-md fade-in" data-category="documentary">
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=documentary%20film%20scene%20of%20environmental%20activism%2C%20people%20protecting%20natural%20resources%2C%20authentic%20documentary%20style%20with%20natural%20lighting%2C%20environmental%20theme%2C%20high-quality%20film%20still%20with%20journalistic%20approach%2C%20cinematic%20composition&width=600&height=400&seq=6&orientation=landscape"
+                                alt="Voices Unheard" class="w-full h-full object-cover object-top">
+                            <div class="overlay"></div>
+                            <div class="play-button w-14 h-14 flex items-center justify-center bg-white/80 rounded-full cursor-pointer"
+                                data-video="voices-unheard">
+                                <i class="ri-play-fill text-primary text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-1">Voices Unheard</h3>
+                            <p class="text-gray-600 text-sm mb-2">Documentary • 2020</p>
+                            <p class="text-gray-700">A documentary amplifying the stories of environmental activists
+                                fighting for change.</p>
+                        </div>
+                    </div>
+                    <div class="video-card rounded-lg overflow-hidden shadow-md fade-in" data-category="narrative">
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=narrative%20film%20scene%20with%20actor%20in%20urban%20night%20setting%2C%20moody%20street%20lighting%20with%20neon%20reflections%2C%20cinematic%20composition%20with%20rain-soaked%20streets%2C%20professional%20film%20production%20quality%2C%20storytelling%20moment%20with%20contemplative%20mood%2C%20artistic%20composition&width=600&height=400&seq=7&orientation=landscape"
+                                alt="The Crossing" class="w-full h-full object-cover object-top">
+                            <div class="overlay"></div>
+                            <div class="play-button w-14 h-14 flex items-center justify-center bg-white/80 rounded-full cursor-pointer"
+                                data-video="the-crossing">
+                                <i class="ri-play-fill text-primary text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-1">The Crossing</h3>
+                            <p class="text-gray-600 text-sm mb-2">Narrative Feature • 2019</p>
+                            <p class="text-gray-700">A drama following three strangers whose lives intersect during one
+                                fateful night in the city.</p>
+                        </div>
+                    </div>
+                    <div class="video-card rounded-lg overflow-hidden shadow-md fade-in" data-category="experimental">
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=experimental%20film%20scene%20with%20surreal%20imagery%2C%20dreamlike%20sequence%20with%20unusual%20perspectives%2C%20creative%20cinematography%20with%20light%20manipulation%2C%20avant-garde%20film%20style%2C%20artistic%20expression%20through%20visual%20medium%2C%20experimental%20lighting%20and%20composition&width=600&height=400&seq=8&orientation=landscape"
+                                alt="Dreamscape" class="w-full h-full object-cover object-top">
+                            <div class="overlay"></div>
+                            <div class="play-button w-14 h-14 flex items-center justify-center bg-white/80 rounded-full cursor-pointer"
+                                data-video="dreamscape">
+                                <i class="ri-play-fill text-primary text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-1">Dreamscape</h3>
+                            <p class="text-gray-600 text-sm mb-2">Experimental • 2020</p>
+                            <p class="text-gray-700">A surreal journey through the subconscious mind, blending dream
+                                logic with visual poetry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <div class="video-modal-close" id="videoModalClose">
+                <i class="ri-close-line"></i>
+            </div>
+            <div id="videoContainer"></div>
+        </div>
+    </div>
+    <!-- Why I Create Section -->
+    <section id="why" class="py-20 md:py-28">
+        <div class="container mx-auto px-6">
+            <div class="mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                    <div class="fade-in">
+                        <img src="https://readdy.ai/api/search-image?query=filmmaker%20working%20behind%20the%20scenes%2C%20director%20with%20camera%20on%20film%20set%2C%20passionate%20creative%20process%2C%20artistic%20vision%20in%20action%2C%20behind%20the%20camera%20perspective%2C%20professional%20film%20production%20environment%2C%20authentic%20moment%20of%20creation&width=600&height=400&seq=9&orientation=landscape"
+                            alt="Filmmaker at work" class="w-full h-auto rounded-lg shadow-lg">
+                    </div>
+                    <div class="fade-in">
+                        <h2 class="section-heading text-3xl md:text-4xl font-bold mb-8 fade-in">Why I Create</h2>
+                        <p class="text-lg mb-6">I believe in the transformative power of cinema. Film has the unique
+                            ability to transport us into different realities, to help us understand experiences beyond
+                            our own, and to inspire action.</p>
+                        <p class="text-lg mb-6">My mission as a filmmaker is to create work that challenges
+                            perspectives, sparks meaningful conversations, and ultimately contributes to positive social
+                            change.</p>
+                        <blockquote class="border-l-4 border-primary pl-4 italic text-lg text-gray-700 my-8">
+                            "I don't just want to tell stories—I want to tell stories that matter, stories that might
+                            change how someone sees the world, even if just for a moment."
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white p-8 rounded-lg shadow-md fade-in">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-6">
+                            <i class="ri-eye-line text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Vision</h3>
+                        <p>To create films that bridge divides and foster empathy across different communities and
+                            experiences.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md fade-in">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-6">
+                            <i class="ri-heart-line text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Passion</h3>
+                        <p>Driven by a deep love for visual storytelling and its power to connect us to our shared
+                            humanity.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md fade-in">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-6">
+                            <i class="ri-compass-line text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Purpose</h3>
+                        <p>To amplify underrepresented voices and explore stories that challenge the status quo.</p>
+                    </div>
+                </div>
+                <div class="parallax-bg py-20 rounded-lg fade-in bg-fixed bg-center bg-cover"
+                    style="background-image: url('https://readdy.ai/api/search-image?query=cinematic%20film%20production%20scene%20with%20silhouettes%20of%20film%20crew%20against%20dramatic%20sunset%2C%20beautiful%20golden%20hour%20lighting%2C%20film%20equipment%20silhouettes%2C%20artistic%20wide%20shot%20of%20movie%20set%2C%20atmospheric%20with%20lens%20flare%2C%20professional%20cinematography&width=1200&height=600&seq=10&orientation=landscape')">
+                    <div class="bg-black/60 p-10 md:p-16 max-w-2xl mx-auto text-center rounded-lg">
+                        <h3 class="text-2xl md:text-3xl font-semibold text-white mb-6">The Silent Revolution</h3>
+                        <p class="text-lg text-white/90 mb-8">My upcoming feature film explores how ordinary people
+                            create extraordinary change through small, daily acts of resistance and compassion.</p>
+                        <p class="text-white/80 italic">Currently in pre-production • Estimated completion: Summer 2026
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Support Section -->
+    <section id="support" class="py-20 md:py-28 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="mx-auto">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-16 fade-in">Support My Journey</h2>
+                <div class="mx-auto mb-4 fade-in">
+                    <p class="text-lg max-w-3xl mb-12">Independent filmmaking requires community support. Your
+                        contribution helps
+                        bring important stories to life and supports the creation of meaningful cinema.</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-medium">Funding Goal: $75,000</span>
+                            <span class="font-medium">$42,500 raised</span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary rounded-full" style="width: 56.7%"></div>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-600">56.7% of goal reached • 73 supporters</div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="support-card bg-white p-8 rounded-lg shadow-md fade-in">
+                        <div class="wrap">
+                            <h3 class="text-xl font-semibold mb-4">Friend</h3>
+                            <p class="text-3xl font-bold text-primary mb-6">$25</p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Special thanks in film credits</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Exclusive behind-the-scenes updates</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Digital download of the film</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-white border border-primary text-primary font-medium rounded-button hover:bg-primary/5 transition-colors whitespace-nowrap">Support
+                            as Friend</button>
+                    </div>
+                    <div class="support-card bg-white p-8 rounded-lg shadow-md border-2 border-primary fade-in">
+                        <div
+                            class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white text-sm px-4 py-1 rounded-full">
+                            Most Popular</div>
+                        <div class="wrap">
+                            <h3 class="text-xl font-semibold mb-4">Producer</h3>
+                            <p class="text-3xl font-bold text-primary mb-6">$100</p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>All Friend benefits</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Associate Producer credit</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Invitation to virtual premiere</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Limited edition poster signed by director</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">Support
+                            as Producer</button>
+                    </div>
+                    <div class="support-card bg-white p-8 rounded-lg shadow-md fade-in">
+                        <h3 class="text-xl font-semibold mb-4">Executive</h3>
+                        <div class="wrap">
+                            <p class="text-3xl font-bold text-primary mb-6">$500</p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>All Producer benefits</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Executive Producer credit</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Early access to rough cut with feedback opportunity</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>One-on-one virtual coffee with director</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Invitation to in-person premiere (travel not included)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-white border border-primary text-primary font-medium rounded-button hover:bg-primary/5 transition-colors whitespace-nowrap">Support
+                            as Executive</button>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md fade-in">
+                    <h3 class="text-xl font-semibold mb-6">Custom Donation</h3>
+                    <div class="mb-6">
+                        <label for="donationAmount" class="block text-gray-700 mb-2">Donation Amount</label>
+                        <div class="flex items-center">
+                            <span class="mr-2 text-lg">$</span>
+                            <input type="number" id="donationAmount" value="50" min="1"
+                                class="w-full p-3 bg-gray-50 border-none rounded focus:ring-2 focus:ring-primary/20 text-lg">
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <button
+                            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap donation-preset"
+                            data-amount="25">$25</button>
+                        <button
+                            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap donation-preset"
+                            data-amount="50">$50</button>
+                        <button
+                            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap donation-preset"
+                            data-amount="100">$100</button>
+                        <button
+                            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap donation-preset"
+                            data-amount="250">$250</button>
+                        <button
+                            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors whitespace-nowrap donation-preset"
+                            data-amount="500">$500</button>
+                    </div>
+                    <div class="mb-8">
+                        <label class="block text-gray-700 mb-4">Payment Method</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <label class="relative block cursor-pointer">
+                                <input type="radio" name="paymentMethod" value="card" class="hidden peer" checked>
+                                <div
+                                    class="payment-box p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors ">
+                                    <div class="flex items-center">
+                                        <div class="flex items-center">
+                                            <i class="ri-bank-card-line text-xl mr-2"></i>
+                                            <span>Credit Card</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="relative block cursor-pointer">
+                                <input type="radio" name="paymentMethod" value="paypal" class="hidden peer">
+                                <div
+                                    class="payment-box p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors ">
+                                    <div class="flex items-center">
+                                        <div class="flex items-center">
+                                            <i class="ri-paypal-fill text-xl mr-2"></i>
+                                            <span>PayPal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="relative block cursor-pointer">
+                                <input type="radio" name="paymentMethod" value="venmo" class="hidden peer">
+                                <div
+                                    class="payment-box p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors ">
+                                    <div class="flex items-center">
+                                        <div class="flex items-center">
+                                            <i class="ri-wallet-line text-xl mr-2"></i>
+                                            <span>Venmo</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full py-3 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">Donate
+                        Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-28">
+        <div class="container mx-auto px-6">
+            <div class="mx-auto">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-16 fade-in">Get in Touch</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="fade-in">
+                        <p class="text-lg mb-8">I'm always open to collaboration, questions, or just a conversation
+                            about film. Whether you're a fellow filmmaker, a potential collaborator, or simply
+                            interested in my work, I'd love to hear from you.</p>
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-4 mt-1">
+                                    <i class="ri-mail-line"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium mb-1">Email</h3>
+                                    <p>james@mitchellfilms.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-4 mt-1">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium mb-1">Based in</h3>
+                                    <p>Brooklyn, New York</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-4 mt-1">
+                                    <i class="ri-time-line"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium mb-1">Response Time</h3>
+                                    <p>Usually within 48 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <h3 class="text-xl font-semibold mb-4">Connect with me</h3>
+                            <div class="flex space-x-4">
+                                <a href="#"
+                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                                    <i class="ri-instagram-line"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                                    <i class="ri-twitter-x-line"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                                    <i class="ri-linkedin-line"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                                    <i class="ri-vimeo-line"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fade-in">
+                        <form id="contactForm" class="bg-white p-8 rounded-lg shadow-md">
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 mb-2">Name</label>
+                                <input type="text" id="name"
+                                    class="w-full p-3 bg-gray-50 border-none rounded focus:ring-2 focus:ring-primary/20">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email"
+                                    class="w-full p-3 bg-gray-50 border-none rounded focus:ring-2 focus:ring-primary/20">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                                <select id="subject"
+                                    class="w-full p-3 bg-gray-50 border-none rounded focus:ring-2 focus:ring-primary/20 pr-8 appearance-none"
+                                    style="background-image: url('data:image/svg+xml;charset=US-ASCII,<svg width=\" 20\"
+                                    height=\"20\" xmlns=\"http://www.w3.org/2000/svg\">
+                                    <path d=\"M7 10l5 5 5-5z\" fill=\"%23555\" /></svg>'); background-repeat: no-repeat;
+                                    background-position: right 10px center;">
+                                    <option value="collaboration">Collaboration Opportunity</option>
+                                    <option value="question">Question about my work</option>
+                                    <option value="support">Support/Donation Inquiry</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 mb-2">Message</label>
+                                <textarea id="message" rows="5"
+                                    class="w-full p-3 bg-gray-50 border-none rounded focus:ring-2 focus:ring-primary/20 resize-none"></textarea>
+                            </div>
+                            <div class="flex items-center mb-6">
+                                <input type="checkbox" id="newsletter" class="hidden">
+                                <div class="custom-checkbox mr-3" data-for="newsletter"></div>
+                                <label for="newsletter" class="cursor-pointer">Subscribe to my newsletter for updates on
+                                    new projects</label>
+                            </div>
+                            <button type="submit"
+                                class="w-full py-3 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">Send
+                                Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-[#8b2635] text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-['Playfair_Display'] font-bold mb-4">James Mitchell</h3>
+                        <p class="text-gray-100 max-w-xl mb-6">Independent filmmaker dedicated to creating meaningful
+                            cinema that
+                            inspires change and fosters empathy.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-100 hover:text-white transition-colors">
+                                <i class="ri-instagram-line text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-100 hover:text-white transition-colors">
+                                <i class="ri-twitter-x-line text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-100 hover:text-white transition-colors">
+                                <i class="ri-linkedin-line text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-100 hover:text-white transition-colors">
+                                <i class="ri-vimeo-line text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#about" class="text-gray-100 hover:text-white transition-colors">About</a></li>
+                            <li><a href="#work" class="text-gray-100 hover:text-white transition-colors">My Work</a>
+                            </li>
+                            <li><a href="#why" class="text-gray-100 hover:text-white transition-colors">Why I Create</a>
+                            </li>
+                            <li><a href="#support" class="text-gray-100 hover:text-white transition-colors">Support</a>
+                            </li>
+                            <li><a href="#contact" class="text-gray-100 hover:text-white transition-colors">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4">Useful Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-100 hover:text-white transition-colors">FAQ's</a>
+                            </li>
+                            <li><a href="#" class="text-gray-100 hover:text-white transition-colors">Privacy Policy</a>
+                            </li>
+                            <li><a href="#" class="text-gray-100 hover:text-white transition-colors">Terms &
+                                    Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pt-8 border-t border-white text-center text-white">
+                    <p>&copy; 2025 James Mitchell Films. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script id="navigationScript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function () {
+                mobileMenu.classList.add('open');
+            });
+            mobileMenuClose.addEventListener('click', function () {
+                mobileMenu.classList.remove('open');
+            });
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.remove('open');
+                });
+            });
+            // Scroll progress bar
+            const progressBar = document.getElementById('progressBar');
+            window.addEventListener('scroll', function () {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            // Active navigation link on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.addEventListener('scroll', function () {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            // Hero section animations
+            const heroTitle = document.getElementById('heroTitle');
+            const heroSubtitle = document.getElementById('heroSubtitle');
+            const heroButton = document.getElementById('heroButton');
+            setTimeout(() => {
+                heroTitle.style.transition = 'opacity 1s ease, transform 1s ease';
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateY(0)';
+                setTimeout(() => {
+                    heroSubtitle.style.transition = 'opacity 1s ease, transform 1s ease';
+                    heroSubtitle.style.opacity = '1';
+                    heroSubtitle.style.transform = 'translateY(0)';
+                    setTimeout(() => {
+                        heroButton.style.transition = 'opacity 1s ease, transform 1s ease';
+                        heroButton.style.opacity = '1';
+                        heroButton.style.transform = 'translateY(0)';
+                    }, 200);
+                }, 200);
+            }, 500);
+        });
+    </script>
+    <script id="fadeInScript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeInObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            fadeElements.forEach(element => {
+                fadeInObserver.observe(element);
+            });
+        });
+    </script>
+    <script id="portfolioScript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Portfolio filter
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.video-card');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(btn => btn.classList.remove('active', 'bg-primary', 'text-white', 'border-primary'));
+                    filterBtns.forEach(btn => btn.classList.add('bg-white', 'border-gray-200'));
+                    // Add active class to clicked button
+                    this.classList.add('active', 'bg-primary', 'text-white', 'border-primary');
+                    this.classList.remove('bg-white', 'border-gray-200');
+                    const filterValue = this.getAttribute('data-filter');
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            // Video modal
+            const videoModal = document.getElementById('videoModal');
+            const videoContainer = document.getElementById('videoContainer');
+            const videoModalClose = document.getElementById('videoModalClose');
+            const playButtons = document.querySelectorAll('.play-button');
+            playButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const videoId = this.getAttribute('data-video');
+                    let videoSrc;
+                    // In a real implementation, you would have actual video sources
+                    switch (videoId) {
+                        case 'beyond-borders':
+                            videoSrc = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+                            break;
+                        case 'echoes-of-silence':
+                            videoSrc = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+                            break;
+                        case 'fragments':
+                            videoSrc = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+                            break;
+                        case 'voices-unheard':
+                            videoSrc = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+                            break;
+                        case 'the-crossing':
+                            videoSrc = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+                            break;
+                        case 'dreamscape':
+                            videoSrc = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+                            break;
+                        default:
+                            videoSrc = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+                    }
+                    videoContainer.innerHTML = `<iframe src="${videoSrc}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    videoModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            videoModalClose.addEventListener('click', function () {
+                videoModal.style.display = 'none';
+                videoContainer.innerHTML = '';
+                document.body.style.overflow = 'auto';
+            });
+            window.addEventListener('click', function (event) {
+                if (event.target === videoModal) {
+                    videoModal.style.display = 'none';
+                    videoContainer.innerHTML = '';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+    <script id="formControlsScript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Custom checkbox functionality
+            const checkboxes = document.querySelectorAll('.custom-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('click', function () {
+                    const forId = this.getAttribute('data-for');
+                    const input = document.getElementById(forId);
+                    if (input.checked) {
+                        input.checked = false;
+                        this.classList.remove('checked');
+                    } else {
+                        input.checked = true;
+                        this.classList.add('checked');
+                    }
+                });
+            });
+            // Custom radio functionality
+            const radios = document.querySelectorAll('.custom-radio');
+            radios.forEach(radio => {
+                radio.addEventListener('click', function () {
+                    const forId = this.getAttribute('data-for');
+                    const input = document.getElementById(forId);
+                    const name = input.getAttribute('name');
+                    // First uncheck all radio inputs in the same group
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(inp => {
+                        inp.checked = false;
+                    });
+                    // Remove checked class from all custom radio buttons
+                    document.querySelectorAll(`.custom-radio[data-for^="payment"]`).forEach(r => {
+                        r.classList.remove('checked');
+                    });
+                    // Check the clicked radio input
+                    input.checked = true;
+                    this.classList.add('checked');
+                    // Handle PayPal specific logic
+                    if (forId === 'paymentPaypal') {
+                        document.getElementById('paymentCard').checked = false;
+                        document.querySelector('.custom-radio[data-for="paymentCard"]').classList.remove('checked');
+                    }
+                });
+            });
+            // Initialize default state
+            document.addEventListener('DOMContentLoaded', () => {
+                const defaultPayment = document.getElementById('paymentCard');
+                if (defaultPayment && defaultPayment.checked) {
+                    document.querySelector('.custom-radio[data-for="paymentCard"]').classList.add('checked');
+                }
+            });
+            // Donation presets
+            const donationPresets = document.querySelectorAll('.donation-preset');
+            const donationInput = document.getElementById('donationAmount');
+            donationPresets.forEach(preset => {
+                preset.addEventListener('click', function () {
+                    const amount = this.getAttribute('data-amount');
+                    donationInput.value = amount;
+                });
+            });
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    // In a real implementation, you would send the form data to a server
+                    // For now, just show a success message
+                    const formData = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        subject: document.getElementById('subject').value,
+                        message: document.getElementById('message').value,
+                        newsletter: document.getElementById('newsletter').checked
+                    };
+                    console.log('Form submitted:', formData);
+                    // Reset form
+                    contactForm.reset();
+                    // Reset custom checkboxes
+                    document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+                        checkbox.classList.remove('checked');
+                    });
+                    // Show success message
+                    alert('Thank you for your message! I will get back to you soon.');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
